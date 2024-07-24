@@ -35,11 +35,18 @@ function App() {
     setItems([...items, newItem]);
   }
 
+  function onExportFormStructure() {
+    const structure = { itemsPerRow, rowHeight, items: items.map(item => item?.element?.type?.name) };
+    navigator.clipboard.writeText(JSON.stringify(structure));
+    alert("The structure of the form has been copied to the clipboard!");
+  }
+
   return (
     <GridContextProvider onChange={onChange}>
       <Container maxWidth='md'>
         <AddNewComponentSection
-          onAddNewFormComponent={onAddNewFormComponent} />
+          onAddNewFormComponent={onAddNewFormComponent}
+          onExportFormStructure={onExportFormStructure} />
         <LayoutConfigurationSection
           itemsPerRow={itemsPerRow} setItemsPerRow={setItemsPerRow}
           rowHeight={rowHeight} setRowHeight={setRowHeight}

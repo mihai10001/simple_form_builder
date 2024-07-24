@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, FormControl, InputLabel, Select, MenuItem, TextField, FormControlLabel, Checkbox } from '@material-ui/core';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
+import ImportExportIcon from '@material-ui/icons/ImportExport';
 import { FormComponentsUnion } from '../entities/FormComponentsUnion';
 import { ColorsUnion } from '../entities/ColorsUnion';
 
@@ -42,12 +43,17 @@ function AddNewComponentSection(props) {
         control={ <Checkbox value={isRequired} onChange={(event) => setIsRequired(event.target.value)} color="primary"/> }
       />
 
-      <Button variant="contained" color="primary" size="large" startIcon={<AddCircleIcon />}
+      <Button variant="contained" color="primary" size="medium" startIcon={<AddCircleIcon />}
         onClick={() => {
           const color = ColorsUnion.find(color => color.id === newComponentColor)?.htmlName;
           props?.onAddNewFormComponent(newComponentIndex, newComponentLabel, color, isRequired);
         }}>
         Add
+      </Button>
+
+      <Button variant="contained" color="default" size="medium" startIcon={<ImportExportIcon />}
+        onClick={() => props?.onExportFormStructure()}>
+        Export
       </Button>
     </div>
   );
