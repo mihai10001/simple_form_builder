@@ -38,7 +38,7 @@ function App() {
   }
 
   function onExportFormStructure() {
-    const structure = { itemsPerRow, rowHeight, items: items.map(({ ['element']: _, ...rest }) => rest) };
+    const structure = { itemsPerRow, rowHeight, items: items.map(({ element: _, ...rest }) => rest) };
     navigator.clipboard.writeText(JSON.stringify(structure));
     alert("The structure of the form has been copied to the clipboard!");
   }
