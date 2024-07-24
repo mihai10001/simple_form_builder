@@ -8,8 +8,11 @@ import {
 import { Container } from '@material-ui/core';
 import './App.css';
 import LayoutConfigurationSection from './components/LayoutConfigurationSection';
+import AddNewComponentSection from './components/AddNewComponentSection';
+import { RenderFormComponent } from './entities/FormComponentsUnion';
 
 function App() {
+  const [items, setItems] = React.useState([]);
   const [itemsPerRow, setItemsPerRow] = React.useState(3);
   const [rowHeight, setRowHeight] = React.useState(76);
 
@@ -19,9 +22,17 @@ function App() {
     return setItems(result);
   }
 
+  function onAddNewFormComponent(index, label, color, isRequired) {
+    const nextIndex = Math.max(...items.map(x => x.gridIndex)) + 1;
+    const newItem = { gridIndex: nextIndex, element: RenderFormComponent(index, label, isRequired), color };
+    setItems([...items, newItem]);
+  }
+
   return (
     <GridContextProvider onChange={onChange}>
       <Container maxWidth='md'>
+        <AddNewComponentSection
+          onAddNewFormComponent={onAddNewFormComponent} />
         <LayoutConfigurationSection
           itemsPerRow={itemsPerRow} setItemsPerRow={setItemsPerRow}
           rowHeight={rowHeight} setRowHeight={setRowHeight}
@@ -34,9 +45,9 @@ function App() {
           rowHeight={rowHeight}
         >
           {items.map(item => (
-            <GridItem key={item.id}>
+            <GridItem key={item.gridIndex}>
               <div className="gridItem">
-                <div className="gridItemContent">
+                <div className="gridItemContent" style={{ backgroundColor: item.color }}>
                   {item.element}
                 </div>
               </div>
