@@ -12,7 +12,7 @@ function SelectFormComponent(props) {
     <FormControl variant="outlined" fullWidth>
       <InputLabel>{props?.label}</InputLabel>
       <Select value={value} onChange={handleChange} variant="outlined"
-        label={props?.label}>
+        label={props?.label} required={props?.required}>
         <MenuItem value={1}>One</MenuItem>
         <MenuItem value={2}>Two</MenuItem>
         <MenuItem value={3}>Three</MenuItem>

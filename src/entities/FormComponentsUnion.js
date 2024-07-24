@@ -29,13 +29,13 @@ export const RenderFormComponent = (id, label, required) => {
     case 4:
       return <SelectFormComponent label={label} required={required} />;
     case 5:
-      return <ButtonFormComponent label={label} required={required} />;
+      return <ButtonFormComponent label={label} />;
     case 6:
-      return <SliderFormComponent label={label} required={required} />;
+      return <SliderFormComponent label={label} />;
     case 7:
       return <ToggleFormComponent label={label} required={required} />;
     case 8:
-      return <BlankFormComponent label={label} required={required} />;
+      return <BlankFormComponent label={label} />;
     default:
       return null;
   }

@@ -17,6 +17,7 @@ function DateTimeFormComponent(props) {
       inputVariant="outlined"
       label={props?.label}
       format="DD-MM-YYYY"
+      required={props?.required}
     />);
 }
 

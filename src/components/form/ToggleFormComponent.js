@@ -11,7 +11,7 @@ function ToggleFormComponent(props) {
   return (
     <FormControlLabel
       style={{ display: 'flex', height: '100%', alignItems: 'center' }}
-      control={ <Switch value={value} onChange={handleChange} color="primary" /> }
+      control={ <Switch value={value} onChange={handleChange} color="primary" required={props?.required} /> }
       label={props?.label}
     />);
 }

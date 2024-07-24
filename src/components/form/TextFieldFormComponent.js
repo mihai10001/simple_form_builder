@@ -15,6 +15,7 @@ function TextFieldFormComponent(props) {
       onChange={handleChange}
       variant="outlined"
       label={props?.label}
+      required={props?.required}
     />);
 }
 

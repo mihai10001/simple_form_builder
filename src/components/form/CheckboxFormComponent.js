@@ -11,7 +11,7 @@ function CheckboxFormComponent(props) {
   return (
     <FormControlLabel
       style={{ display: 'flex', height: '100%', alignItems: 'center' }}
-      control={ <Checkbox value={value} onChange={handleChange} color="primary"/> }
+      control={ <Checkbox value={value} onChange={handleChange} color="primary" required={props?.required} /> }
       label={props?.label}
     />);
 }
