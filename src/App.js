@@ -16,6 +16,8 @@ function App() {
   const [items, setItems] = React.useState(
     FormComponentsUnion.map(comp => ({
       gridIndex: comp?.id,
+      id: comp?.id,
+      name: comp?.name,
       element: RenderFormComponent(comp?.id, comp?.name, false),
       color: 'rgba(216, 191, 216, 0.5)'
     }))
@@ -31,12 +33,12 @@ function App() {
 
   function onAddNewFormComponent(index, label, color, isRequired) {
     const nextIndex = Math.max(...items.map(x => x.gridIndex)) + 1;
-    const newItem = { gridIndex: nextIndex, element: RenderFormComponent(index, label, isRequired), color };
+    const newItem = { gridIndex: nextIndex, element: RenderFormComponent(index, label, isRequired), color, id: index, name: label };
     setItems([...items, newItem]);
   }
 
   function onExportFormStructure() {
-    const structure = { itemsPerRow, rowHeight, items: items.map(item => item?.element?.type?.name) };
+    const structure = { itemsPerRow, rowHeight, items: items.map(({ ['element']: _, ...rest }) => rest) };
     navigator.clipboard.writeText(JSON.stringify(structure));
     alert("The structure of the form has been copied to the clipboard!");
   }
