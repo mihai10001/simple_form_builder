@@ -4,15 +4,9 @@
 
 .configSection {
   margin: 10px 0;
-  padding: 0 10px;
-  height: 80px;
+  padding: 10px;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 1rem;
-  flex: 1;
-  display: flex;
-  width: 100%;
-  align-items: center;
-  justify-content: space-between;
 }
 
 .dropzone {
@@ -32,4 +26,12 @@
   width: 100%;
   height: 100%;
   border-radius: 0.25rem;
+}
+
+.gridItemContent:hover {
+  cursor: grab;
+}
+
+.gridItemContent:hover * {
+  cursor: grab;
 }
