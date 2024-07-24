@@ -9,10 +9,17 @@ import { Container } from '@material-ui/core';
 import './App.css';
 import LayoutConfigurationSection from './components/LayoutConfigurationSection';
 import AddNewComponentSection from './components/AddNewComponentSection';
+import { FormComponentsUnion } from './entities/FormComponentsUnion';
 import { RenderFormComponent } from './entities/FormComponentsUnion';
 
 function App() {
-  const [items, setItems] = React.useState([]);
+  const [items, setItems] = React.useState(
+    FormComponentsUnion.map(comp => ({
+      gridIndex: comp?.id,
+      element: RenderFormComponent(comp?.id, comp?.name, false),
+      color: 'rgba(216, 191, 216, 0.5)'
+    }))
+  );
   const [itemsPerRow, setItemsPerRow] = React.useState(3);
   const [rowHeight, setRowHeight] = React.useState(76);
 
